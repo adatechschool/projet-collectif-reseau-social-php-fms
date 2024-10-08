@@ -25,13 +25,28 @@
 
             </nav>
         </header>
-        <div id="wrapper">          
+        <div id="wrapper"> 
+        <?php
+            $userId = intval($_GET['user_id']);
+            ?>
+            <?php
+            $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
+            ?>         
             <aside>
+            <?php
+
+                $laQuestionEnSql = "SELECT * FROM `users` WHERE id= '$userId' ";
+                $lesInformations = $mysqli->query($laQuestionEnSql);
+                $user = $lesInformations->fetch_assoc();
+
+                //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par l'alias et effacer la ligne ci-dessous
+                // echo "<pre>" . print_r($user, 1) . "</pre>";
+                ?>
                 <img src = "user.jpg" alt = "Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
                     <p>Sur cette page vous trouverez la liste des personnes qui
-                        suivent les messages de l'utilisatrice
+                        suivent les messages de l'utilisatrice <?php echo  $user['alias']; ?>
                         n° <?php echo intval($_GET['user_id']) ?></p>
 
                 </section>
@@ -51,14 +66,23 @@
                     GROUP BY users.id
                     ";
                 $lesInformations = $mysqli->query($laQuestionEnSql);
+                if ( ! $lesInformations)
+                {
+                    echo("Échec de la requete : " . $mysqli->error);
+                }
                 // Etape 4: à vous de jouer
                 //@todo: faire la boucle while de parcours des abonnés et mettre les bonnes valeurs ci dessous 
+                while ( $followers = $lesInformations->fetch_assoc()) 
+                {  
                 ?>
                 <article>
                     <img src="user.jpg" alt="blason"/>
-                    <h3>Béatrice</h3>
-                    <p>id:321</p>
+                    <h3><?php echo $followers['alias'] ; ?></h3>
+                    <p><?php echo "id: " . $followers['id'] ; ?></p>
                 </article>
+                <?php
+                }// et de pas oublier de fermer ici vote while
+                ?>
             </main>
         </div>
     </body>

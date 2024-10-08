@@ -102,7 +102,7 @@
                 ?>      
                 <article>
                     <h3>
-                        <time datetime='2020-02-01 11:12:13' >31 février 2010 à 11h12</time>
+                        <time ><?php echo $post['created'] ?></time>
                     </h3>
                     <address><?php echo "Par " . $post['author_name'] ; ?></address>
                     <div>
