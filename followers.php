@@ -38,9 +38,6 @@
                 $laQuestionEnSql = "SELECT * FROM `users` WHERE id= '$userId' ";
                 $lesInformations = $mysqli->query($laQuestionEnSql);
                 $user = $lesInformations->fetch_assoc();
-
-                //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par l'alias et effacer la ligne ci-dessous
-                // echo "<pre>" . print_r($user, 1) . "</pre>";
                 ?>
                 <img src = "user.jpg" alt = "Portrait de l'utilisatrice"/>
                 <section>
@@ -53,12 +50,9 @@
             </aside>
             <main class='contacts'>
                 <?php
-                // Etape 1: récupérer l'id de l'utilisateur
                 $userId = intval($_GET['user_id']);
-                // Etape 2: se connecter à la base de donnée
-                $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
-                // Etape 3: récupérer le nom de l'utilisateur
-                $laQuestionEnSql = "
+                    $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
+                      $laQuestionEnSql = "
                     SELECT users.*
                     FROM followers
                     LEFT JOIN users ON users.id=followers.following_user_id
@@ -70,8 +64,6 @@
                 {
                     echo("Échec de la requete : " . $mysqli->error);
                 }
-                // Etape 4: à vous de jouer
-                //@todo: faire la boucle while de parcours des abonnés et mettre les bonnes valeurs ci dessous 
                 while ( $followers = $lesInformations->fetch_assoc()) 
                 {  
                 ?>
@@ -81,7 +73,7 @@
                     <p><?php echo "id: " . $followers['id'] ; ?></p>
                 </article>
                 <?php
-                }// et de pas oublier de fermer ici vote while
+                }
                 ?>
             </main>
         </div>

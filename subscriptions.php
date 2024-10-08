@@ -40,11 +40,8 @@
             </aside>
             <main class='contacts'>
                 <?php
-                // Etape 1: récupérer l'id de l'utilisateur
-                $userId = intval($_GET['user_id']);
-                // Etape 2: se connecter à la base de donnée
+                 $userId = intval($_GET['user_id']);
                 $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
-                // Etape 3: récupérer le nom de l'utilisateur
                 $laQuestionEnSql = "
                     SELECT users.* 
                     FROM followers 
@@ -53,9 +50,7 @@
                     GROUP BY users.id
                     ";
                 $lesInformations = $mysqli->query($laQuestionEnSql);
-                // Etape 4: à vous de jouer
-                //@todo: faire la boucle while de parcours des abonnés et mettre les bonnes valeurs ci dessous 
-                if ( ! $lesInformations)
+                    if ( ! $lesInformations)
                 {
                     echo("Échec de la requete : " . $mysqli->error);
                     exit();
