@@ -15,7 +15,7 @@
           $tagId = intval($_GET['tag_id']);
             ?>
             <?php
-                include 'vars.php';
+               include 'connect.php'; 
             ?>
 
             <aside>

@@ -23,7 +23,7 @@
             <main>
                 <?php
                 $userId = intval($_GET['user_id']);
-                include 'vars.php';
+                include 'connect.php'; 
                 $laQuestionEnSql = "
                     SELECT users.*, 
                     count(DISTINCT posts.id) as totalpost, 

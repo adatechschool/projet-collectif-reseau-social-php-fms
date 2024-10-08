@@ -21,7 +21,7 @@
             </aside>
             <main>  
                 <?php       
-                     include 'vars.php';
+                     include 'connect.php'; 
                      if ($mysqli->connect_errno)
                 {
                     echo "<article>";

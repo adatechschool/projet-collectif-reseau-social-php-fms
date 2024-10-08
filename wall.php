@@ -15,7 +15,7 @@
                $userId =intval($_GET['user_id']);
             ?>
             <?php
-            include 'vars.php';
+            include 'connect.php'; 
             ?>
 
             <aside>

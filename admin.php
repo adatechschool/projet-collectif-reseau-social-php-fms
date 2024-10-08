@@ -11,7 +11,7 @@
        <?php include 'header.php';?>
         </header>
         <?php       
-       include 'vars.php';     
+      include 'connect.php';    
         if ($mysqli->connect_errno)
         {
             echo("Échec de la connexion : " . $mysqli->connect_error);
