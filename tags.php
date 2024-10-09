@@ -7,9 +7,8 @@
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
-        <header>
        <?php include 'header.php';?>
-        </header>
+
         <div id="wrapper">
             <?php
           $tagId = intval($_GET['tag_id']);
