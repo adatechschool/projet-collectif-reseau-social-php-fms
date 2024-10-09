@@ -7,10 +7,9 @@
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
-        <header>
             <?php include 'header.php';?>
-        </header>
-        <div id="wrapper" class='profile'>
+            
+         <div id="wrapper" class='profile'>
             <aside>
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
