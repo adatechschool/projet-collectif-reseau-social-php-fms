@@ -6,10 +6,9 @@
         <meta name="author" content="Julien Falconnet">
         <link rel="stylesheet" href="style.css"/>
     </head>
-    <body>
-        <header>
+    <body>        
        <?php include 'header.php';?>
-        </header>
+        
         <?php       
       include 'connect.php';    
         if ($mysqli->connect_errno)

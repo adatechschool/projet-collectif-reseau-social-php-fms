@@ -6,10 +6,9 @@
         <meta name="author" content="Julien Falconnet">
         <link rel="stylesheet" href="style.css"/>
     </head>
-    <body>
-        <header>
+    <body> 
        <?php include 'header.php';?>
-        </header>
+   
         <div id="wrapper">
             <?php
                $userId =intval($_GET['user_id']);
