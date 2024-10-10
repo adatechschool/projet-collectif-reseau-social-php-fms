@@ -1,3 +1,8 @@
+<?php 
+include 'session.php';
+include 'connect.php';
+?>
+
 <!doctype html>
 <html lang="fr">
     <head>
@@ -10,13 +15,6 @@
        <?php include 'header.php';?>
 
         <div id="wrapper">
-            <?php
-          $tagId = intval($_GET['tag_id']);
-            ?>
-            <?php
-               include 'connect.php'; 
-            ?>
-
             <aside>
                 <?php
                      $laQuestionEnSql = "SELECT * FROM tags WHERE id= '$tagId' ";
@@ -31,7 +29,6 @@
                         le mot-clé <?php echo $tag ['label']?>
                         (n° <?php echo $tag ['id']?>)
                     </p>
-
                 </section>
             </aside>
             <main>
@@ -69,7 +66,6 @@
                         <address>par <?php echo $post ['author_name']?></address>
                         <div>
                             <p><?php echo $post ['content']?></p>
-
                         </div>                                            
                         <footer>
                             <small>♥<?php echo $post ['like_number']?></small>
@@ -77,8 +73,6 @@
                         </footer>
                     </article>
                 <?php } ?>
-
-
             </main>
         </div>
     </body>
