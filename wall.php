@@ -73,6 +73,19 @@ include 'connect.php';
                 </section>
             </aside>
             <main>
+                <article>
+                <h2>Poster un message</h2>
+                <form action="wall.php" method="post">
+                    <input type='hidden' name='auteur' value=''>
+                    <label for='auteur'>Auteur</label>
+                    <input type="number" name="auteur">
+                                <!-- echo "<option value='$id'>$alias</option>"; -->
+                        <dt><label for='message'>Message</label></dt>
+                        <dd><textarea name='message'></textarea></dd>
+                    </dl>
+                    <input type='submit'>
+                </form>
+                </article>
                 <?php
                 $laQuestionEnSql = "
                     SELECT posts.content, posts.created, users.alias as author_name, 
