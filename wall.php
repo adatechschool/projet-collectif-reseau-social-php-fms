@@ -16,6 +16,20 @@ include 'connect.php';
        <?php include 'header.php';?>
       
        <?php 
+        // session_start();
+
+        // // Vérifie si il y a un user_id dans l'URL
+        // if (isset($_GET['user_id'])) {
+        //     // Convertis avec intval pour la sécurité
+        //     $userId = intval($_GET['user_id']);
+        //     // On stock le user_id dans la session actuelle
+        //     $_SESSION['user_id'] = $userId;
+        // } elseif (isset($_SESSION['user_id'])) {
+        //     // Si l'URL n'a pas de user_id mais que la session en contient un, on l'utilise
+        //     $userId = $_SESSION['user_id'];
+        // } else {
+        //     die("Aucun utilisateur connecté.");
+        // }
 
         // Si la méthode est POST et que le champ 'message' existe
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['message'])) {
