@@ -1,5 +1,6 @@
 <?php 
 include 'connect.php'   ; 
+session_start();
 ?>
 
 <!doctype html>
@@ -48,6 +49,7 @@ include 'connect.php'   ;
                         echo "Votre connexion est un succès : " . $user['alias'] . ".";
                         $_SESSION['connected_id'] = $user['id'];
                         $_SESSION['pseudo'] = $user['alias'];
+                        var_dump($_SESSION);
 
                     }
                 }
