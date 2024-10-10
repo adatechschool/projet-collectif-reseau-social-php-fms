@@ -17,6 +17,7 @@ include 'connect.php';
         <div id="wrapper">
             <aside>
                 <?php
+                     $tagId = $_GET['tag_id'];
                      $laQuestionEnSql = "SELECT * FROM tags WHERE id= '$tagId' ";
                 $lesInformations = $mysqli->query($laQuestionEnSql);
                 $tag = $lesInformations->fetch_assoc();
