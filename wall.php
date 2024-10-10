@@ -8,32 +8,65 @@
     </head>
     <body> 
        <?php include 'header.php';?>
-   
-        <div id="wrapper">
-            <?php
-               $userId =intval($_GET['user_id']);
-            ?>
-            <?php
-            include 'connect.php'; 
-            ?>
+       <?php include 'connect.php';?>
+       <?php 
+        session_start();
 
+        // Vérifie si il y a un user_id dans l'URL
+        if (isset($_GET['user_id'])) {
+            // Convertis avec intval pour la sécurité
+            $userId = intval($_GET['user_id']);
+            // On stock le user_id dans la session actuelle
+            $_SESSION['user_id'] = $userId;
+        } elseif (isset($_SESSION['user_id'])) {
+            // Si l'URL n'a pas de user_id mais que la session en contient un, on l'utilise
+            $userId = $_SESSION['user_id'];
+        } else {
+            die("Aucun utilisateur connecté.");
+        }
+
+        // Si la méthode est POST et que le champ 'message' existe
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['message'])) {
+            $message = $_POST['message'];
+            
+            if (!empty($message)) {
+                // Prépare la requête SLQ pour mettre le message dans la BDD
+                $requeteSQL = "INSERT INTO posts (content, user_id, created) VALUES (?, ?, NOW())";
+                // Prépare la requete SQL avec la connexion à la BDD ($mysqli)
+                $appelSQL = $mysqli->prepare($requeteSQL);
+                // Lie les valeurs du message (chaine de caractères) et de l'utilisateur à la requete
+                // le 'si' veut dire 's' pour le premier parametre donc string et 'i' pour le deuxieme parametre donc integer
+                $appelSQL->bind_param('si', $message, $userId);
+                // Execute la requete
+                $appelSQL->execute();
+                header("Location: wall.php?user_id=" . $userId);
+                exit();
+        }}
+        ?>
+
+        <div id="wrapper">
             <aside>
                 <?php              
+                // Récupération des informations de l'utilisateur
                 $laQuestionEnSql = "SELECT * FROM users WHERE id= '$userId' ";
                 $lesInformations = $mysqli->query($laQuestionEnSql);
-                $user = $lesInformations->fetch_assoc();
-            //echo "<pre>" . print_r($user, 1) . "</pre>";
+                if ($lesInformations) {
+                    $user = $lesInformations->fetch_assoc();
+                } else {
+                    die("Erreur lors de l'exécution de la requête : " . $mysqli->error);
+                }
                 ?>
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
-                    <p>Sur cette page vous trouverez tous les message de l'utilisatrice : <?php echo $user['alias'] ?>
+                    <p>Sur cette page vous trouverez tous les messages de l'utilisatrice : <?php echo $user['alias'] ?>
                         (n° <?php echo $userId ?>)
                     </p>
                 </section>
             </aside>
             <main>
                 <?php
+                // Requête pour récupérer les posts
                 $laQuestionEnSql = "
                     SELECT posts.content, posts.created, users.alias as author_name, 
                     COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist 
@@ -51,11 +84,20 @@
                 {
                     echo("Échec de la requete : " . $mysqli->error);
                 }
+                ?>
+
+                <!-- Formulaire pour envoyer un message -->
+                <form action="wall.php?user_id=<?php echo $userId; ?>" method="post">
+                    <dl>
+                        <dd><textarea name='message'></textarea></dd>
+                    </dl>
+                    <input type="submit" value="Poster">
+                </form>
+
+                <?php
                 while ($post = $lesInformations->fetch_assoc())
                 {
-
-                    //echo "<pre>" . print_r($post, 1) . "</pre>";
-                    ?>                
+                ?>   
                     <article>
                         <h3>
                             <time datetime='2020-02-01 11:12:13' ><?php echo $post['created'] ?></time>
@@ -70,8 +112,6 @@
                         </footer>
                     </article>
                 <?php } ?>
-
-
             </main>
         </div>
     </body>
