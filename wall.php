@@ -1,3 +1,9 @@
+<?php 
+include 'session.php';    
+include 'connect.php';  
+?>
+
+
 <!doctype html>
 <html lang="fr">
     <head>
@@ -8,22 +14,8 @@
     </head>
     <body> 
        <?php include 'header.php';?>
-       <?php include 'connect.php';?>
+      
        <?php 
-        session_start();
-
-        // Vérifie si il y a un user_id dans l'URL
-        if (isset($_GET['user_id'])) {
-            // Convertis avec intval pour la sécurité
-            $userId = intval($_GET['user_id']);
-            // On stock le user_id dans la session actuelle
-            $_SESSION['user_id'] = $userId;
-        } elseif (isset($_SESSION['user_id'])) {
-            // Si l'URL n'a pas de user_id mais que la session en contient un, on l'utilise
-            $userId = $_SESSION['user_id'];
-        } else {
-            die("Aucun utilisateur connecté.");
-        }
 
         // Si la méthode est POST et que le champ 'message' existe
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['message'])) {
@@ -40,7 +32,7 @@
                 $appelSQL->bind_param('si', $message, $userId);
                 // Execute la requete
                 $appelSQL->execute();
-                header("Location: wall.php?user_id=" . $userId);
+                header("Location: wall.php");
                 exit();
         }}
         ?>
@@ -55,11 +47,13 @@
                 } else {
                     die("Erreur lors de l'exécution de la requête : " . $mysqli->error);
                 }
+                $user = $lesInformations->fetch_assoc();
+                
                 ?>
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
-                    <p>Sur cette page vous trouverez tous les messages de l'utilisatrice : <?php echo $user['alias'] ?>
+                    <p>Sur cette page vous trouverez tous les messages de l'utilisatrice : <?php echo $userPseudo ?>
                         (n° <?php echo $userId ?>)
                     </p>
                 </section>

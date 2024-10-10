@@ -1,3 +1,9 @@
+<?php 
+include 'session.php';    
+include 'connect.php';  
+?>
+
+
 <!doctype html>
 <html lang="fr">
     <head>

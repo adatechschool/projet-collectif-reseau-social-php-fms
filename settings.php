@@ -1,3 +1,8 @@
+<?php 
+include 'session.php';    
+include 'connect.php';  
+?>
+
 <!doctype html>
 <html lang="fr">
     <head>
@@ -15,14 +20,12 @@
                 <section>
                     <h3>Présentation</h3>
                     <p>Sur cette page vous trouverez les informations de l'utilisatrice
-                        n° <?php echo intval($_GET['user_id']) ?></p>
+                        n° <?php echo $userId ?></p>
 
                 </section>
             </aside>
             <main>
                 <?php
-                $userId = intval($_GET['user_id']);
-                include 'connect.php'; 
                 $laQuestionEnSql = "
                     SELECT users.*, 
                     count(DISTINCT posts.id) as totalpost, 

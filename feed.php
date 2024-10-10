@@ -1,3 +1,8 @@
+<?php 
+include 'session.php';    
+include 'connect.php';  
+?>
+
 <!doctype html>
 <html lang="fr">
     <head>
@@ -10,28 +15,14 @@
        <?php include 'header.php';?>
         
         <div id="wrapper">
-            <?php          
-            $userId = intval($_GET['user_id']);
-            ?>
-        <?php       
-       include 'connect.php';  
-       ?>
-
             <aside>
-                <?php              
-                $laQuestionEnSql = "SELECT * FROM `users` WHERE id= '$userId' ";
-                $lesInformations = $mysqli->query($laQuestionEnSql);
-                $user = $lesInformations->fetch_assoc();                
-                //echo "<pre>" . print_r($user, 1) . "</pre>";
-                ?>
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
-                    <h3>Présentation</h3>
+                    <h3>Présentation test</h3>
                     <p>Sur cette page vous trouverez tous les message des utilisatrices
-                        auxquel est abonnée l'utilisatrice <?php echo  $user['alias']; ?>
+                        auxquel est abonnée l'utilisatrice <?php echo $userPseudo; ?>
                         (n° <?php echo $userId ?>)
                     </p>
-
                 </section>
             </aside>
             <main>
@@ -67,10 +58,6 @@
                     <address><?php echo "Par " . $post['author_name'] ; ?></address>
                     <div>
                         <p><?php echo $post['content'] ; ?></p>
-                        <p>Ceci est un autre paragraphe</p>
-                        <p>... de toutes manières il faut supprimer cet 
-                            article et le remplacer par des informations en 
-                            provenance de la base de donnée</p>
                     </div>                                            
                     <footer>
                         <small>♥ <?php echo $post['like_number'] ; ?></small>
