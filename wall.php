@@ -31,6 +31,7 @@
             
             if (!empty($message)) {
                 // Prépare la requête SLQ pour mettre le message dans la BDD
+                //les valeurs en '?' ne sont définies qu'après avec le bind_param
                 $requeteSQL = "INSERT INTO posts (content, user_id, created) VALUES (?, ?, NOW())";
                 // Prépare la requete SQL avec la connexion à la BDD ($mysqli)
                 $appelSQL = $mysqli->prepare($requeteSQL);
@@ -47,7 +48,6 @@
         <div id="wrapper">
             <aside>
                 <?php              
-                // Récupération des informations de l'utilisateur
                 $laQuestionEnSql = "SELECT * FROM users WHERE id= '$userId' ";
                 $lesInformations = $mysqli->query($laQuestionEnSql);
                 if ($lesInformations) {
@@ -66,7 +66,6 @@
             </aside>
             <main>
                 <?php
-                // Requête pour récupérer les posts
                 $laQuestionEnSql = "
                     SELECT posts.content, posts.created, users.alias as author_name, 
                     COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist 
