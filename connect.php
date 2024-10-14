@@ -1,3 +1,3 @@
-<?php 
-    require 'vars.php';
+<?php
+require 'vars.php';
 $mysqli = new mysqli($hostname, $username, $password, $database);

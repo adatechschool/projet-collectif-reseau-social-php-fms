@@ -1,5 +1,5 @@
-<?php 
-include 'connect.php'   ; 
+<?php
+include 'connect.php';
 session_start();
 ?>
 
@@ -14,7 +14,7 @@ session_start();
 </head>
 
 <body>
-    <?php include 'header.php';?>
+    <?php include 'header.php'; ?>
 
     <div id="wrapper">
 
@@ -39,7 +39,7 @@ session_start();
                         . "WHERE "
                         . "email LIKE '" . $emailAVerifier . "'"
                     ;
-                   
+
                     $res = $mysqli->query($lInstructionSql);
                     $user = $res->fetch_assoc();
                     if (!$user or $user["password"] != $passwdAVerifier) {

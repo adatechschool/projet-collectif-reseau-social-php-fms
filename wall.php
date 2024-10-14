@@ -20,17 +20,20 @@ include 'likes.php';
 
     <div id="wrapper">
 
-        <?php 
+        <?php
 
         // Arriver sur la page d'un autre utilisateur
         // Vérifie si un user_id est présent dans l'URL
         if (isset($_GET['user_id'])) {
             $userId = $_GET['user_id']; // ID de l'utilisateur dans l'URL
-        // } else {
-        //     $userId = $_SESSION['connected_id']; // Si pas d'ID dans l'URL, on utilise l'ID de l'utilisateur connecté
+            // } else {
+            //     $userId = $_SESSION['connected_id']; // Si pas d'ID dans l'URL, on utilise l'ID de l'utilisateur connecté
         }
 
         $userId = $mysqli->real_escape_string($userId); // Sécurisation de l'ID
+        
+
+
         //var_dump($userId);
         // var_dump($_SESSION['connected_id']);
         $sql = "SELECT * FROM users WHERE id = '$userId'";
@@ -38,16 +41,18 @@ include 'likes.php';
 
 
         // Gestion de la publication de message 
-
-        // Si la méthode est POST et que le champ 'message' existe
+        
+        // Si la méthode est POST et que le champ 'message' existe 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['message'])) {
             $message = $_POST['message'];
 
             if (!empty($message)) {
                 $authorId = $_SESSION['connected_id']; // Ton propre ID
+                echo "<pre>" . "ID DE LA PERSONNE CONNECTEE = " . $authorId . "</pre>";
+
                 var_dump($authorId);
                 $wallUserId = $userId; // L'ID de l'utilisateur sur lequel tu es
-
+        
                 // Prépare la requête SLQ pour mettre le message dans la BDD
                 //les valeurs en '?' ne sont définies qu'après avec le bind_param
                 $requeteSQL = "INSERT INTO posts (content, user_id, wall_user_id, created) VALUES (?, ?, ?, NOW())";
@@ -58,7 +63,7 @@ include 'likes.php';
                 $appelSQL->bind_param('sii', $message, $authorId, $wallUserId);
                 // Execute la requete
                 $appelSQL->execute();
-                header("Location: ". $_SERVER['REQUEST_URI']);
+                header("Location: " . $_SERVER['REQUEST_URI']);
                 exit();
             }
         }
@@ -75,7 +80,7 @@ include 'likes.php';
 
             if ($followingResult->num_rows > 0) {
                 //num_rows retourne le nombre de ligne du résultat de ma requête, si pas de ligne -> pas d'abonnement existant
-                $messageApresClick = "Vous êtes déjà abonné."; 
+                $messageApresClick = "Vous êtes déjà abonné.";
             } else {
 
                 // On insère le nouvel abonnement dans la BDD
@@ -90,7 +95,7 @@ include 'likes.php';
             }
         }
 
-       
+
 
 
         // On vérifie si la méthode est POST et si le formulaire de désabonnement a été soumis
@@ -107,7 +112,7 @@ include 'likes.php';
                 $messageApresClick = "Vous vous êtes désabonné avec succès.";
             }
         }
-        
+
         ?>
         <aside>
             <?php
@@ -120,11 +125,12 @@ include 'likes.php';
                 die("Erreur lors de l'exécution de la requête : " . $mysqli->error);
             }
             ?>
-
+            <h2><?php echo "<pre>" . "userId lié à la page actuellement : " . $userId . "</pre>"; ?></h2>
+            <!-- <h2><?php echo "<pre>" . "Confirmation de l'id du user connecté : " . $authorId . "</pre>"; ?></h2> -->
             <img src="user.jpg" alt="Portrait de l'utilisatrice" />
             <section>
                 <h3>Présentation</h3>
-                <p>Sur cette page vous trouverez tous les messages de l'utilisatrice <?php echo($user['alias']) ?>
+                <p>Sur cette page vous trouverez tous les messages de l'utilisatrice <?php echo ($user['alias']) ?>
                     (n° <?php echo $user['id'] ?>)
                 </p>
             </section>
@@ -195,12 +201,12 @@ include 'likes.php';
                         <small>♥ <?php echo $post['like_number'] ?></small>
                         <form action="wall.php" method="post" style="display:inline;">
                             <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>" />
-                            <!-- <?php  echo "<pre>" . print_r($post, 1) . "</pre>"; ?> -->
+                            <!-- <?php echo "<pre>" . print_r($post, 1) . "</pre>"; ?> -->
                             <button type="submit" name="action" value="like">👍 J'aime</button>
                             <button type="submit" name="action" value="dislike">👎 Je n'aime plus</button>
                         </form>
                         <a href="">#<?php echo $post['taglist'] ?></a>,
-                        
+
                     </footer>
                 </article>
                 <?php
