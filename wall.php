@@ -88,8 +88,11 @@ include 'connect.php';
                     $messageApresClick = "Erreur lors de l'ajout du like : " . $mysqli->error;
                 } else {
                     $messageApresClick = "Vous avez liké ce post.";
+
                 }
             }
+            header("Location: wall.php");
+            exit();
         }
 
 
@@ -180,7 +183,7 @@ include 'connect.php';
                         <small>♥ <?php echo $post['like_number'] ?></small>
                         <form action="wall.php" method="post" style="display:inline;">
                             <input type="hidden" name="like" value="<?php echo $post['id']; ?>" />
-                            <?php  echo "<pre>" . print_r($post, 1) . "</pre>"; ?>
+                            <!-- <?php  echo "<pre>" . print_r($post, 1) . "</pre>"; ?> -->
                             
                             <input type="submit" value="👍 J'aime">
                         </form>
