@@ -42,7 +42,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     header("Location: " . $_SERVER['REQUEST_URI']);
     exit();
 }
-
-
-
-

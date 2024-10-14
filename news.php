@@ -85,7 +85,6 @@ include 'likes.php';
                 <?php
             }
             ?>
-
         </main>
     </div>
 </body>
