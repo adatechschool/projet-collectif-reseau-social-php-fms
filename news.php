@@ -37,8 +37,8 @@ include 'likes.php';
                     exit();
                 }
                 $laQuestionEnSql = "
-                    SELECT posts.id,
-                    posts.content,
+                    SELECT posts.content,
+                    posts.user_id,
                     posts.created,
                     users.alias as author_name,  
                     count(likes.id) as like_number,  
@@ -68,7 +68,9 @@ include 'likes.php';
                         <h3>
                             <time><?php echo $post['created'] ?></time>
                         </h3>
-                        <address>par <?php echo $post['author_name'] ?></address>
+                        <address>par 
+                            <a href="wall.php?user_id=<?php echo $post['user_id']?>"> <?php echo $post['author_name'] ?></a>
+                        </address>
                         <div>
                             <p><?php echo $post['content'] ?></p>
                         </div>
