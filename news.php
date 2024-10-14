@@ -1,6 +1,7 @@
 <?php 
 include 'session.php';    
 include 'connect.php';  
+include 'likes.php';
 ?>
 
 
@@ -36,7 +37,8 @@ include 'connect.php';
                     exit();
                 }
                 $laQuestionEnSql = "
-                    SELECT posts.content,
+                    SELECT posts.id,
+                    posts.content,
                     posts.created,
                     users.alias as author_name,  
                     count(likes.id) as like_number,  
@@ -72,6 +74,12 @@ include 'connect.php';
                         </div>
                         <footer>
                             <small>♥<?php echo $post['like_number'] ?></small>
+                            <form action="news.php" method="post" style="display:inline;">
+                            <input type="hidden" name="like" value="<?php echo $post['id']; ?>" />
+                            <!-- <?php  echo "<pre>" . print_r($post, 1) . "</pre>"; ?> -->
+                            
+                            <input type="submit" value="👍 J'aime">
+                        </form>
                             <a href="">#<?php echo $post['taglist'] ?></a>,
                         </footer>
                     </article>
