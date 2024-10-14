@@ -66,10 +66,10 @@ include 'likes.php';
                     <footer>
                         <small>♥ <?php echo $post['like_number'] ; ?></small>
                         <form action="feed.php" method="post" style="display:inline;">
-                            <input type="hidden" name="like" value="<?php echo $post['id']; ?>" />
+                            <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>" />
                             <!-- <?php  echo "<pre>" . print_r($post, 1) . "</pre>"; ?> -->
-                            
-                            <input type="submit" value="👍 J'aime">
+                            <button type="submit" name="action" value="like">👍 J'aime</button>
+                            <button type="submit" name="action" value="dislike">👎 Je n'aime plus</button>
                         </form>
                         <a href="">#<?php echo $post['taglist'] ;?></a>,                       
                     </footer>
