@@ -1,3 +1,9 @@
+
+<?php 
+include 'session.php';    
+include 'connect.php';  
+?>
+
 <!doctype html>
 <html lang="fr">
     <head>
@@ -17,7 +23,7 @@
                     <h3>Présentation</h3>
                     <p>Sur cette page vous trouverez la liste des personnes dont
                         l'utilisatrice
-                        n° <?php echo intval($_GET['user_id']) ?>
+                        n° <?php echo $userId ; ?>
                         suit les messages
                     </p>
 
@@ -25,8 +31,6 @@
             </aside>
             <main class='contacts'>
                 <?php
-                 $userId = intval($_GET['user_id']);
-                include 'connect.php'; 
                 $laQuestionEnSql = "
                     SELECT users.* 
                     FROM followers 

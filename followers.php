@@ -1,3 +1,8 @@
+<?php 
+include 'session.php';    
+include 'connect.php';  
+?>
+
 <!doctype html>
 <html lang="fr">
     <head>
@@ -7,15 +12,11 @@
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>        
+        
             <?php include 'header.php';?>
         
         <div id="wrapper"> 
-        <?php
-            $userId = intval($_GET['user_id']);
-            ?>
-            <?php      
-                include 'connect.php'; 
-            ?>         
+        
             <aside>
             <?php
 
@@ -27,15 +28,13 @@
                 <section>
                     <h3>Présentation</h3>
                     <p>Sur cette page vous trouverez la liste des personnes qui
-                        suivent les messages de l'utilisatrice <?php echo  $user['alias']; ?>
-                        n° <?php echo intval($_GET['user_id']) ?></p>
+                        suivent les messages de l'utilisatrice <?php echo  $userPseudo; ?>
+                        n° <?php echo $userId ; ?></p>
 
                 </section>
             </aside>
             <main class='contacts'>
                 <?php
-                $userId = intval($_GET['user_id']);
-                    $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
                       $laQuestionEnSql = "
                     SELECT users.*
                     FROM followers
