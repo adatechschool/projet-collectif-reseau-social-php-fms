@@ -68,20 +68,31 @@ include 'connect.php';
             }
         }
 
-        // On vérifie si la méthode est POST et si le formulaire de désabonnement a été soumis
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['unsubscribe'])) {
-            // On supprime l'abonnement de la BDD
-            $requeteSQL = "DELETE FROM `followers`
-                                        WHERE followed_user_id = '$userId' 
-                                        AND following_user_id = '$userId'";
-            $result = $mysqli->query($requeteSQL);
-            if (!$result) {
-                $messageApresClick = "Erreur lors du désabonnement : " . $mysqli->error;
+        // Gestion des Likes 
+        // Si la méthode est POST et que le champ 'message' existe
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['like'])) {
+            $postId = $_POST['like'];
+            
+            // Vérifie si l'utilisateur a déjà liké le post
+            $checkLikeSQL = "SELECT * FROM likes WHERE user_id = '$userId' AND post_id = '$postId'";
+            $likeResult = $mysqli->query($checkLikeSQL);
+
+            if ($likeResult->num_rows > 0) {
+                // Si un like existe déjà, ne pas ajouter de nouveau like
+                $messageApresClick = "Vous avez déjà liké ce post.";
             } else {
-                $messageApresClick = "Vous vous êtes désabonné avec succès.";
+                // Ajouter un nouveau like
+                $requeteSQL = "INSERT INTO likes (user_id, post_id) VALUES ('$userId', '$postId')";
+                $result = $mysqli->query($requeteSQL);
+                if (!$result) {
+                    $messageApresClick = "Erreur lors de l'ajout du like : " . $mysqli->error;
+                } else {
+                    $messageApresClick = "Vous avez liké ce post.";
+                }
             }
         }
-        
+
+
         ?>
         <aside>
             <?php
@@ -129,7 +140,7 @@ include 'connect.php';
             <?php
             // Récupération des publications
             $laQuestionEnSql = "
-                    SELECT posts.content, posts.created, users.alias as author_name, 
+                    SELECT posts.id, posts.content, posts.created, users.alias as author_name, 
                     COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist 
                     FROM posts
                     JOIN users ON  users.id=posts.user_id
@@ -167,6 +178,12 @@ include 'connect.php';
                     </div>
                     <footer>
                         <small>♥ <?php echo $post['like_number'] ?></small>
+                        <form action="wall.php" method="post" style="display:inline;">
+                            <input type="hidden" name="like" value="<?php echo $post['id']; ?>" />
+                            <?php  echo "<pre>" . print_r($post, 1) . "</pre>"; ?>
+                            
+                            <input type="submit" value="👍 J'aime">
+                        </form>
                         <a href="">#<?php echo $post['taglist'] ?></a>,
                         
                     </footer>
