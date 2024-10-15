@@ -203,7 +203,19 @@ include 'likes.php';
                         ?>
                         </time>
                     </h3>
-                    <address>par <?php echo $post['author_name'] ?></address>
+                        <?php 
+                        if ($post['author_name'] === $user['alias']) {
+                        ?>
+                            <address>
+                            de <?php echo $post['author_name'];
+                        } else {
+                        ?>
+                            <address>
+                            de <?php echo $post['author_name']?>
+                            à <?php echo $user['alias']?>
+                        <?php } ?>
+
+                    </address>
                     <div>
                         <p><?php echo $post['content'] ?></p>
                     </div>
