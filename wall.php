@@ -206,13 +206,14 @@ include 'likes.php';
                         <?php 
                         if ($post['author_name'] === $user['alias']) {
                         ?>
-                            <address>
-                            de <?php echo $post['author_name'];
+                            <address>de
+                            <a href="wall.php?user_id=<?php echo $userId ?>"> <?php echo $post['author_name'];?></a>
+                        <?php
                         } else {
                         ?>
-                            <address>
-                            de <?php echo $post['author_name']?>
-                            à <?php echo $user['alias']?>
+                            <address>de
+                            <a href="wall.php?user_id=<?php echo $_SESSION['connected_id'] ?>"> <?php echo $post['author_name'];?></a>
+                            à <a href="wall.php?user_id=<?php echo $userId ?>"> <?php echo $user['alias'];?></a>
                         <?php } ?>
 
                     </address>
