@@ -1,10 +1,10 @@
 <header>
-    <img src="resoc.jpg" alt="Logo de notre réseau social" />
+    <img src="fms.PNG" alt="Logo de notre réseau social" />
     <nav id="menu">
         <a href="news.php">Actualités</a>
         <a href="wall.php">Mur</a>
         <a href="feed.php">Flux</a>
-        <a href="tags.php">Mots-clés</a>
+         <!--<a href="tags.php">Mots-clés</a>-->
     </nav>
     <nav id="user">
         <a href="#">Profil</a>
