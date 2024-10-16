@@ -125,7 +125,7 @@ include 'likes.php';
                 die("Erreur lors de l'exécution de la requête : " . $mysqli->error);
             }
             ?>
-            <h2><?php echo "<pre>" . "userId lié à la page actuellement : " . $userId . "</pre>"; ?></h2>
+            <!-- <h2><?php echo "<pre>" . "userId lié à la page actuellement : " . $userId . "</pre>"; ?></h2> -->
             <!-- <h2><?php echo "<pre>" . "Confirmation de l'id du user connecté : " . $authorId . "</pre>"; ?></h2> -->
             <img src="user.jpg" alt="Portrait de l'utilisatrice" />
             <section>
@@ -191,7 +191,17 @@ include 'likes.php';
                 ?>
                 <article>
                     <h3>
-                        <time datetime='2020-02-01 11:12:13'><?php echo $post['created'] ?></time>
+                        <time datetime='<?php echo $post['created'] ?>'>
+                        <?php 
+                            $date = new DateTime($post['created']); 
+                            $formatter = new IntlDateFormatter(
+                                'fr_FR', 
+                                IntlDateFormatter::LONG,  //date
+                                IntlDateFormatter::SHORT //heure
+                            );
+                            echo $formatter->format($date);
+                        ?>
+                        </time>
                     </h3>
                     <address>par <?php echo $post['author_name'] ?></address>
                     <div>
