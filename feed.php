@@ -57,7 +57,17 @@ include 'likes.php';
                 ?>
                 <article>
                     <h3>
-                        <time><?php echo $post['created'] ?></time>
+                        <time datetime='<?php echo $post['created'] ?>'>
+                            <?php 
+                                $date = new DateTime($post['created']); 
+                                $formatter = new IntlDateFormatter(
+                                'fr_FR', 
+                                IntlDateFormatter::LONG,  //date
+                                IntlDateFormatter::SHORT //heure
+                            );
+                            echo $formatter->format($date);
+                        ?>
+                        </time>
                     </h3>
                     <address>par
                         <a href="wall.php?user_id=<?php echo $post['user_id'] ?>"> <?php echo $post['author_name'] ?></a>
