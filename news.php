@@ -22,9 +22,8 @@ include 'likes.php';
         <aside>
             <img src="user.jpg" alt="Portrait de l'utilisatrice" />
             <section>
-                <h3>Présentation</h3>
-                <p>Sur cette page vous trouverez les derniers messages de
-                    tous les utilisatrices du site.</p>
+                <h3>Tous messages de fms</h3>
+                <p>Retrouvez toutes les publications de fms !</p>
             </section>
         </aside>
         <main>
@@ -94,7 +93,6 @@ include 'likes.php';
                             <button type="submit" name="action" value="like">👍 J'aime</button>
                             <button type="submit" name="action" value="dislike">👎 Je n'aime plus</button>
                         </form>
-                        <a href="">#<?php echo $post['taglist'] ?></a>,
                     </footer>
                 </article>
                 <?php

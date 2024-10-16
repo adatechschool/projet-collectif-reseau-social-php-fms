@@ -129,10 +129,8 @@ include 'likes.php';
             <!-- <h2><?php echo "<pre>" . "Confirmation de l'id du user connecté : " . $authorId . "</pre>"; ?></h2> -->
             <img src="user.jpg" alt="Portrait de l'utilisatrice" />
             <section>
-                <h3>Présentation</h3>
-                <p>Sur cette page vous trouverez tous les messages de l'utilisatrice <?php echo ($user['alias']) ?>
-                    (n° <?php echo $user['id'] ?>)
-                </p>
+                <h3><?php echo ($user['alias']) ?></h3>
+                <p>Retrouvez tous les messages de <?php echo ($user['alias']) ?></p>
             </section>
             <section>
                 <!-- Afficher le message d'abonnement/désabonnement si défini -->
@@ -215,8 +213,6 @@ include 'likes.php';
                             <button type="submit" name="action" value="like">👍 J'aime</button>
                             <button type="submit" name="action" value="dislike">👎 Je n'aime plus</button>
                         </form>
-                        <a href="">#<?php echo $post['taglist'] ?></a>,
-
                     </footer>
                 </article>
                 <?php

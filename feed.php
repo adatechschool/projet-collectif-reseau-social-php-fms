@@ -9,7 +9,7 @@ include 'likes.php';
 
 <head>
     <meta charset="utf-8">
-    <title>ReSoC - Flux</title>
+    <title>ReSoC - Feed</title>
     <meta name="author" content="Julien Falconnet">
     <link rel="stylesheet" href="style.css" />
 </head>
@@ -21,10 +21,8 @@ include 'likes.php';
         <aside>
             <img src="user.jpg" alt="Portrait de l'utilisatrice" />
             <section>
-                <h3>Présentation test</h3>
-                <p>Sur cette page vous trouverez tous les message des utilisatrices
-                    auxquel est abonnée l'utilisatrice <?php echo $userPseudo; ?>
-                    (n° <?php echo $userId ?>)
+                <h3>Vos abonnements</h3>
+                <p><?php echo $userPseudo;?>, voici tous les messages des personnes que vous suivez !
                 </p>
             </section>
         </aside>
@@ -83,7 +81,6 @@ include 'likes.php';
                             <button type="submit" name="action" value="like">👍 J'aime</button>
                             <button type="submit" name="action" value="dislike">👎 Je n'aime plus</button>
                         </form>
-                        <a href="">#<?php echo $post['taglist']; ?></a>,
                     </footer>
                 </article>
                 <?php
