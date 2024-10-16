@@ -1,46 +1,78 @@
 body {
-    background-color: #003;
-    font-family: Arial;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(221, 255, 253, 1) 50%, rgba(109, 217, 181, 1) 100%);
+    font-family: 'Courier New', Courier, monospace;
+
+    /* Coins arrondis */
+    margin: 0;
+
+
+}
+
+.top-bar {
+    /* background-color:blue; */
+    height: 2em;
+    background: #1C8CD7;
+    /* Couleur de la barre supérieure */
+    border-radius: 4px;
+    box-shadow: inset 0 4px 8px rgba(255, 255, 255, 0.4), 3px 3px 5px rgba(0, 0, 0, 0.3);
+
 }
 
 a {
-    text-decoration: none;
+    text-decoration: underline;
     color: black;
 }
 
 a:hover {
-    text-decoration: underline;
+    color: #FF4500;
 }
 
 body>header {
-    background-color: #fff;
+    background-color: #D8D8D8;
     display: flex;
-    width: 80em;
-    margin: 0 auto 2em auto;
+    width: 100%;
+    height: 3em;
+    /* margin: 0 auto 1em auto; */
     padding: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 
 }
 
 body>header img {
-    height: 5em;
+
+    height: 100%;
 }
 
 body>header #menu {
     display: flex;
-    width: 50%;
+    width: 30%;
     align-items: stretch;
-    border-left: 1px solid #99b;
+    /* border-left: 1px solid #99b; */
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); */
+    /* Ombre portée */
 }
 
 body>header #menu a {
+    transition: background-color 0.3s, transform 0.3s;
+    /* Douce transition */
     flex: 1;
+    padding-left: 1em;
     text-align: center;
-    padding-top: 2em;
-    border-right: 1px solid #99b;
+    padding-top: 1em;
+
+    color: #1C8CD7;
+    /* Couleur des liens */
+    
 }
 
 body>header a:hover {
-    background-color: #99b;
+    background-color: #00B140;
+    /* Couleur de fond au survol */
+    color: white;
+    /* Texte blanc au survol */
+    transform: translateY(-2px);
+    /* Légère élévation au survol */
 }
 
 body>header ul {
@@ -51,13 +83,17 @@ body>header #user {
     margin-left: auto;
     flex: 0.2;
     border-left: 1px solid #99b;
+    
+
 }
 
 body>header #user>a {
     display: block;
     text-align: center;
-    padding: 2em 0;
+    padding: 1em 0;
+    color: #1C8CD7;
     width: 100%;
+
 }
 
 body>header #user ul {
@@ -77,24 +113,40 @@ body>header #user ul li a {
     width: 10em;
     padding: 1em;
     border-bottom: 1px solid #99b;
+
 }
 
 body>header #user:hover ul {
     display: block;
 }
 
+aside h3 {
+    text-align: center;
+    color: #1C8CD7;
+    /* Titre bleu */
+    text-shadow: 0 4px 4px rgba(13, 125, 13, 0.404);
+}
 
 #wrapper {
     display: flex;
-    width: 80em;
-    margin: 0 auto 2em auto;
+    width: 100%;
+    /* margin: 0 auto 1em auto; */
+    /* border: solid 1px rgb(106, 155, 208); */
+    /* border-radius: 10px; */
 }
 
 #wrapper aside {
+    /* margin-left: 1em; */
     background-color: #fff;
     flex: 1;
     padding: 1em;
     border-radius: 1em;
+    border: 1px solid #1f0d60;
+    max-width: 30%;
+
+    /* Crée une bordure double de 5px */
+
+    text-align: center;
 }
 
 #wrapper aside img {
@@ -103,18 +155,44 @@ body>header #user:hover ul {
     margin: auto;
 }
 
+
+.sub-unsub-forms {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    /* Permet aux boutons de passer à la ligne si nécessaire */
+    gap: 10px;
+    /* Espacement entre les boutons */
+    align-items: stretch;
+    /* Les boutons auront la même hauteur */
+
+    flex: 1 1 auto;
+    /* Assure une adaptation à l'espace disponible */
+    margin: 0;
+    padding-top: 40%;
+    /* Suppression de la marge par défaut des formulaires */
+    /* display: flex; */
+    /* flex-wrap: wrap;  */
+    /* Permet au formulaire de se comporter correctement sur petits écrans */
+
+}
+
 #wrapper main {
+    padding-top: 2em;
     flex: 3;
-    padding-left: 1em;
-    height: 80vh;
+    padding-left: 3em;
+    height: 100vh;
     overflow-y: scroll;
 }
 
 #wrapper main article {
     background-color: #fff;
+    border: solid #1f0d60 1px;
     padding: 1em;
     margin-bottom: 1em;
     border-radius: 1em;
+    width: 90%;
+
 }
 
 #wrapper main article h3 {
@@ -122,6 +200,9 @@ body>header #user:hover ul {
     padding: 0;
     font-weight: normal;
     font-size: 1em;
+    color: #1C8CD7;
+    font-weight: bold;
+
 
 }
 
@@ -132,19 +213,44 @@ body>header #user:hover ul {
 #wrapper main article address {
     text-align: right;
     margin-bottom: 1em;
+    color: #1C8CD7;
+    font-weight: bold;
 }
 
 #wrapper main article p {
     margin: 0;
+
+
 }
 
 #wrapper main article footer {
     margin-top: 1em;
     text-align: right;
+    display: flex;
+    /* Permet de placer les éléments sur la même ligne */
+    justify-content: flex-end;
+    /* Sépare <small> à gauche et les boutons à droite */
+    align-items: center;
+    /* Aligne verticalement les éléments au centre */
 }
 
 #wrapper main article footer small {
-    float: left;
+    margin-right: 1em;
+}
+
+
+#wrapper main article footer form {
+    display: inline-flex;
+    /* Place les boutons sur la même ligne */
+    gap: 10px;
+    /* Ajoute un espace entre les boutons */
+}
+
+#wrapper main article footer button {
+    font-family: 'Courier New', Courier, monospace;
+    border-style: dotted;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(221, 255, 253, 1) 50%, rgba(109, 217, 181, 1) 100%);
 }
 
 #wrapper.admin {
@@ -189,6 +295,36 @@ body>header #user:hover ul {
     margin: 0;
 }
 
+.post {
+ 
+    padding-bottom: 2em;
+    display: flex;
+    /* Permet de placer les éléments sur la même ligne */
+
+    align-items: center;
+    /* Aligne verticalement les éléments au centre */
+
+    width: 100%;
+
+
+    /* Permet aux boutons de passer à la ligne si nécessaire */
+    gap: 1%;
+    /* Espacement entre les boutons */
+    align-items: stretch;
+    /* Les boutons auront la même hauteur */
+    /* justify-content: space-between; */
+
+    /* background-color: red; */
+}
+
+.post textarea {
+    width: 78%;
+    box-shadow: inset 0px 4px 6px rgba(255, 255, 255, 0.5),
+        /* Ombre interne (effet de surbrillance) */
+        2px 2px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 7px;
+    border-color: #1f0d60;
+}
 
 .parameters dl dt {
     float: left;
@@ -240,14 +376,262 @@ form dl dd textarea {
     height: 15em;
 }
 
-.sub-unsub-forms {
+/** Gestion des boutons **/
+
+
+/* .sub-unsub-forms form>input[name="subscribe"] {
+
+} */
+.button-sub-pushable {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    flex: 1;
+    /* Les boutons prennent une place égale */
+    min-height: 50px;
+    /* Hauteur minimale des boutons */
     display: flex;
-    /* Utilisation de flexbox pour l'alignement */
-    gap: 10px;
-    /* Espacement entre les boutons */
+    align-items: center;
+    /* Centre le contenu verticalement */
+    justify-content: center;
+    /* Centre le texte horizontalement */
 }
 
-.sub-unsub-forms form {
-    margin: 0;
-    /* Suppression de la marge par défaut des formulaires */
+.button-sub-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+    background: hsl(0deg 0% 0% / 0.25);
+    will-change: transform;
+    transform: translateY(2px);
+    transition:
+        transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.button-sub-edge,
+.button-unsub-edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+    background: linear-gradient(to left,
+            hsl(32, 96%, 40%) 0%,
+            hsl(23, 82%, 52%) 8%,
+            hsl(27, 88%, 55%) 92%,
+            hsl(28, 95%, 53%) 100%);
+}
+
+/* .button-unsub-edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+    background: linear-gradient(to left,
+            hsl(340deg 100% 16%) 0%,
+            hsl(340deg 100% 32%) 8%,
+            hsl(340deg 100% 32%) 92%,
+            hsl(340deg 100% 16%) 100%);
+} */
+
+.button-sub-front {
+    display: block;
+    position: relative;
+    padding: 10px 25px;
+    border-radius: 7px;
+    border: solid 1px;
+    border-bottom: solid orangered;
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(33, 52, 116);
+    background: rgb(65, 51, 158);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 5%, rgba(197, 218, 238, 1) 46%, rgba(214, 227, 239, 1) 60%, rgba(237, 245, 252, 1) 100%);
+    will-change: transform;
+    transform: translateY(-4px);
+    transition:
+        transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.button-unsub-front {
+    display: block;
+    position: relative;
+    padding: 10px 25px;
+    border-radius: 7px;
+    border: solid 1px;
+    font-family: 'Courier New', Courier, monospace;
+    border-bottom: solid orangered;
+    font-size: 1rem;
+    color: rgb(33, 52, 116);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(172, 168, 217, 1) 44%, rgba(221, 221, 221, 1) 59%);
+    will-change: transform;
+    transform: translateY(-4px);
+    transition:
+        transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+
+@media (max-width: 768px) {
+    .sub-unsub-forms {
+        flex-direction: column;
+        /* Les boutons sont disposés en colonne */
+        align-items: center;
+        /* Centre les boutons verticalement */
+    }
+
+    #sub-button,
+    #unsub-button {
+        font-size: 1.25rem;
+        padding: 12px 42px;
+    }
+
+    #sub-button,
+    #unsub-button {
+        width: 100%;
+        /* Chaque bouton/formulaire prend la largeur complète */
+
+    }
+}
+
+.button-sub-pushable:hover {
+    filter: brightness(110%);
+    -webkit-filter: brightness(110%);
+}
+
+.button-sub-pushable:hover .button-sub-front {
+    transform: translateY(-6px);
+    transition:
+        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-sub-pushable:active .button-sub-front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+}
+
+.button-sub-pushable:hover .button-sub-shadow {
+    transform: translateY(4px);
+    transition:
+        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-sub-pushable:active .button-sub-shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+}
+
+.button-sub-pushable:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Style pour le bouton Envoyer */
+#button-envoyer {
+    background: linear-gradient(180deg, #FFFFFF 0%, #D3D3D3 100%);
+    /* Dégradé du haut vers le bas */
+    border: 1px solid #1f0d60;
+    /* Bordure grise */
+    border-radius: 10px;
+    /* Coins arrondis */
+    padding: 10px 20px;
+    /* Espacement interne */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    /* Taille du texte */
+    font-weight: bold;
+    font-weight: bold;
+    color: #1f0d60;
+    /* Couleur du texte */
+    box-shadow: inset 0px 4px 6px rgba(232, 144, 11, 0.5),
+        /* Ombre interne (effet de surbrillance) */
+        2px 2px 4px rgba(9, 199, 28, 0.5);
+    /* Ombre externe (effet 3D) */
+    cursor: pointer;
+    text-transform: uppercase;
+    /* Texte en majuscules */
+    transition: all 0.3s ease;
+    /* Transition pour effet au survol */
+}
+
+#button-envoyer:hover {
+    background: linear-gradient(180deg, #EFEFEF 0%, #C0C0C0 100%);
+    /* Légère variation du dégradé au survol */
+    box-shadow: inset 0px 4px 6px rgba(255, 255, 255, 0.7),
+        /* Accentuation de l'ombre interne */
+        4px 4px 8px rgba(0, 0, 0, 0.6);
+    /* Augmentation de l'ombre externe */
+}
+
+#button-envoyer:active {
+    background: linear-gradient(180deg, #D3D3D3 0%, #A9A9A9 100%);
+    /* Couleur plus sombre à l'appui */
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.6),
+        /* Réduction de l'ombre interne */
+        1px 1px 2px rgba(0, 0, 0, 0.7);
+    /* Réduction de l'ombre externe */
+    transform: translateY(2px);
+    /* Légère translation pour effet de clic */
+}
+
+
+/* Style pour le bouton d'abonnement */
+#sub-button,
+#unsub-button {
+    background: linear-gradient(180deg, #FFFFFF 0%, #D3D3D3 100%);
+    /* Dégradé du haut vers le bas */
+    border: 1px solid #1f0d60;
+    /* Bordure grise */
+    border-radius: 10px;
+    /* Coins arrondis */
+    padding: 8px 18px;
+    /* Espacement interne */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    /* Taille du texte */
+    font-weight: bold;
+    color: #1f0d60;
+    /* Couleur du texte */
+    box-shadow: inset 0px 4px 6px rgba(232, 144, 11, 0.5),
+        /* Ombre interne (effet de surbrillance) */
+        2px 2px 4px rgba(9, 199, 28, 0.5);
+    /* Ombre externe (effet 3D) */
+    cursor: pointer;
+    text-transform: uppercase;
+    /* Texte en majuscules */
+    transition: all 0.3s ease;
+    /* Transition pour effet au survol */
+}
+
+#sub-button:hover,
+#unsub-button:hover {
+    background: linear-gradient(180deg, #EFEFEF 0%, #C0C0C0 100%);
+    /* Légère variation du dégradé au survol */
+    box-shadow: inset 0px 4px 6px rgba(255, 255, 255, 0.7),
+        /* Accentuation de l'ombre interne */
+        4px 4px 8px rgba(0, 0, 0, 0.6);
+    /* Augmentation de l'ombre externe */
+}
+
+#sub-button:active,
+#unsub-button:active {
+    background: linear-gradient(180deg, #D3D3D3 0%, #A9A9A9 100%);
+    /* Couleur plus sombre à l'appui */
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.6),
+        /* Réduction de l'ombre interne */
+        1px 1px 2px rgba(0, 0, 0, 0.7);
+    /* Réduction de l'ombre externe */
+    transform: translateY(2px);
+    /* Légère translation pour effet de clic */
 }

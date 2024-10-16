@@ -11,11 +11,13 @@ include 'likes.php';
     <meta charset="utf-8">
     <title>ReSoC - Mur</title>
     <meta name="author" content="Julien Falconnet">
-    <link rel="stylesheet" href="style.css?v=1.0" />
+    <link rel="stylesheet" href="style.css?v=1.5" />
+
     <!-- nouvelle version du CSS suite à ajout de la class sub-unsub-forms -->
 </head>
 
 <body>
+    <section class="top-bar"></section>
     <?php include 'header.php'; ?>
 
     <div id="wrapper">
@@ -130,7 +132,9 @@ include 'likes.php';
             <img src="user.jpg" alt="Portrait de l'utilisatrice" />
             <section>
                 <h3><?php echo ($user['alias']) ?></h3>
-                <p>Retrouvez tous les messages de <?php echo ($user['alias']) ?></p>
+                <p>Bienvenue sur mon mur
+                    <!-- (n° <?php echo $user['id'] ?>) -->
+                </p>
             </section>
             <section>
                 <!-- Afficher le message d'abonnement/désabonnement si défini -->
@@ -143,14 +147,31 @@ include 'likes.php';
                     <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
                         <!-- Champ caché pour envoyer l'ID de l'utilisateur à suivre -->
                         <input type="hidden" name="user_id" value="<?php echo $userId; ?>" />
-                        <input type="submit" name="subscribe" value="Je m'abonne">
+                        <input type="submit" value="m'abonner" name="subscribe" id="sub-button">
+                        <!-- <input type="submit" name="subscribe" value="Suivre" class="sub-button-pushable"> -->
+                        <!-- <button type="submit" name="subscribe" value="Suivre" class="button-sub-pushable">
+                            <span class="button-sub-shadow"></span>
+                            <span class="button-sub-edge"></span>
+                            <span class="button-sub-front">
+                                Suivre
+                            </span>
+                        </button> -->
                     </form>
                     <!-- Formulaire pour se désabonner -->
                     <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
                         <!-- Champ caché pour envoyer l'ID de l'utilisateur à désabonner -->
                         <input type="hidden" name="user_id" value="<?php echo $userId; ?>" />
-                        <input type="submit" name="unsubscribe" value="Je me désabonne">
+                        <input type="submit" value="me désabonner" name="unsubscribe" id="unsub-button">
+                        <!-- <input type="submit" name="unsubscribe" value="Ne plus suivre"> -->
+                        <!-- <button type="submit" name="unsubscribe" value="Ne plus suivre" class="button-sub-pushable" id="unsubscribe">
+                            <span class="button-sub-shadow"></span>
+                            <span class="button-unsub-edge"></span>
+                            <span class="button-unsub-front">
+                                Ne plus suivre
+                            </span>
+                        </button> -->
                     </form>
+
                 </div>
             </section>
         </aside>
@@ -177,11 +198,11 @@ include 'likes.php';
             ?>
 
             <!-- Formulaire pour envoyer un message -->
-            <form action="wall.php?user_id=<?php echo $userId; ?>" method="post">
-                <dl>
-                    <dd><textarea name='message' placeholder="Écris ton ptit mess ici..."></textarea></dd>
-                </dl>
-                <input type="submit" value="Poster">
+            <form class="post" action="wall.php?user_id=<?php echo $userId; ?>" method="post">
+
+                <textarea name='message' placeholder="Écris ton ptit mess ici..."></textarea>
+
+                <input type="submit" value="Envoyer" id="button-envoyer">
             </form>
             <?php
             // Affichage des publications
@@ -207,7 +228,7 @@ include 'likes.php';
                     </div>
                     <footer>
                         <small>♥ <?php echo $post['like_number'] ?></small>
-                        <form action="wall.php" method="post" style="display:inline;">
+                        <form action="wall.php" method="post">
                             <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>" />
                             <!-- <?php echo "<pre>" . print_r($post, 1) . "</pre>"; ?> -->
                             <button type="submit" name="action" value="like">👍 J'aime</button>
