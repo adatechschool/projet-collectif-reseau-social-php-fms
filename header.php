@@ -1,5 +1,5 @@
 <header>
-    <img src="resoc.jpg" alt="Logo de notre réseau social" />
+    <img src="fms.PNG" alt="Logo de notre réseau social" />
     <nav id="menu">
         <a href="news.php">Actualités</a>
         <a href="wall.php">Mur</a>
@@ -12,6 +12,7 @@
             <li><a href="settings.php">Paramètres</a></li>
             <li><a href="followers.php">Followers</a></li>
             <li><a href="subscriptions.php">Mes abonnements</a></li>
+            <li><a href="disconnect.php">Déconnexion</a></li>
         </ul>
     </nav>
 </header>

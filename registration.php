@@ -56,11 +56,11 @@ include 'connect.php';
                     <input type='hidden' name='pseudo' value='pseudo'>
                     <dl>
                         <dt><label for='pseudo'>Pseudo</label></dt>
-                        <dd><input type='text' name='pseudo'></dd>
+                        <dd><input type='text' name='pseudo'required></dd>
                         <dt><label for='email'>E-Mail</label></dt>
-                        <dd><input type='email' name='email'></dd>
+                        <dd><input type='email' name='email' required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></dd>
                         <dt><label for='motpasse'>Mot de passe</label></dt>
-                        <dd><input type='password' name='motpasse'></dd>
+                        <dd><input type='password' name='motpasse'required></dd>
                     </dl>
                     <input type='submit'>
                 </form>
