@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <section class="top-bar"></section>
     <?php include 'header.php'; ?>
 
     <?php
