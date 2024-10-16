@@ -4,7 +4,7 @@
         <a href="news.php">Actualités</a>
         <a href="wall.php">Mur</a>
         <a href="feed.php">Feed</a>
-        <a href="tags.php">Tendances</a>
+        <!-- <a href="tags.php">Tendances</a> -->
     </nav>
     <nav id="user">
         <a href="#">Profil</a>
