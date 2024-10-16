@@ -12,7 +12,7 @@
             <li><a href="settings.php">Paramètres</a></li>
             <li><a href="followers.php">Mes suiveurs</a></li>
             <li><a href="subscriptions.php">Mes abonnements</a></li>
-             <li><a href="disconnect.php">Déconnexion</a></li>
+            <li><a href="disconnect.php">Déconnexion</a></li>
         </ul>
     </nav>
 </header>
