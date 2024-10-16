@@ -52,15 +52,16 @@ session_start();
                         var_dump($_SESSION);
 
                     }
-                }
+            }
                 ?>
                 <form action="login.php" method="post">
                     <input type='hidden' name='email'>
                     <dl>
                         <dt><label for='email'>E-Mail</label></dt>
-                        <dd><input type='email' name='email'></dd>
+                        <dd><input type='email' name='email' 
+                        required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></dd>
                         <dt><label for='motpasse'>Mot de passe</label></dt>
-                        <dd><input type='password' name='motpasse'></dd>
+                        <dd><input type='password' name='motpasse'required></dd>
                     </dl>
                     <input type='submit'>
                 </form>
@@ -73,5 +74,4 @@ session_start();
         </main>
     </div>
 </body>
-
 </html>
