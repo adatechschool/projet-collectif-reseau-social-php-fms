@@ -2,6 +2,7 @@
 include 'session.php';
 include 'connect.php';
 include 'likes.php';
+include 'fetch_sql.php';
 ?>
 
 <!doctype html>
@@ -21,7 +22,6 @@ include 'likes.php';
     <div id="wrapper">
 
         <?php
-
         // Arriver sur la page d'un autre utilisateur
         // Vérifie si un user_id est présent dans l'URL
         if (isset($_GET['user_id'])) {
@@ -32,10 +32,6 @@ include 'likes.php';
 
         $userId = $mysqli->real_escape_string($userId); // Sécurisation de l'ID
         
-
-
-        //var_dump($userId);
-        // var_dump($_SESSION['connected_id']);
         $sql = "SELECT * FROM users WHERE id = '$userId'";
         $result = $mysqli->query($sql);
 
@@ -95,9 +91,6 @@ include 'likes.php';
             }
         }
 
-
-
-
         // On vérifie si la méthode est POST et si le formulaire de désabonnement a été soumis
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['unsubscribe'])) {
             $connectedUserId = $_SESSION['connected_id']; // Utilisateur connecté
@@ -114,17 +107,11 @@ include 'likes.php';
         }
 
         ?>
+        <?php 
+        $user = fetchUserById($mysqli, $userId);
+        $lesInformations = fetchPosts($mysqli, $userId);
+        ?>
         <aside>
-            <?php
-            // Récupération des informations de l'utilisateur
-            $laQuestionEnSql = "SELECT * FROM users WHERE id= '$userId' ";
-            $lesInformations = $mysqli->query($laQuestionEnSql);
-            if ($lesInformations) {
-                $user = $lesInformations->fetch_assoc();
-            } else {
-                die("Erreur lors de l'exécution de la requête : " . $mysqli->error);
-            }
-            ?>
             <!-- <h2><?php echo "<pre>" . "userId lié à la page actuellement : " . $userId . "</pre>"; ?></h2> -->
             <!-- <h2><?php echo "<pre>" . "Confirmation de l'id du user connecté : " . $authorId . "</pre>"; ?></h2> -->
             <img src="user.jpg" alt="Portrait de l'utilisatrice" />
@@ -158,25 +145,6 @@ include 'likes.php';
         </aside>
 
         <main>
-            <?php
-            // Récupération des publications
-            $laQuestionEnSql = "
-                    SELECT posts.id, posts.content, posts.created, users.alias as author_name, 
-                    COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist 
-                    FROM posts
-                    JOIN users ON  users.id=posts.user_id
-                    LEFT JOIN posts_tags ON posts.id = posts_tags.post_id  
-                    LEFT JOIN tags       ON posts_tags.tag_id  = tags.id 
-                    LEFT JOIN likes      ON likes.post_id  = posts.id 
-                    WHERE posts.wall_user_id = '$userId' OR posts.user_id = '$userId' 
-                    GROUP BY posts.id
-                    ORDER BY posts.created DESC  
-                    ";
-            $lesInformations = $mysqli->query($laQuestionEnSql);
-            if (!$lesInformations) {
-                echo ("Échec de la requete : " . $mysqli->error);
-            }
-            ?>
 
             <!-- Formulaire pour envoyer un message -->
             <form action="wall.php?user_id=<?php echo $userId; ?>" method="post">
@@ -185,55 +153,8 @@ include 'likes.php';
                 </dl>
                 <input type="submit" value="Poster">
             </form>
-            <?php
-            // Affichage des publications
-            while ($post = $lesInformations->fetch_assoc()) {
-                ?>
-                <article>
-                    <h3>
-                        <time datetime='<?php echo $post['created'] ?>'>
-                        <?php 
-                            $date = new DateTime($post['created']); 
-                            $formatter = new IntlDateFormatter(
-                                'fr_FR', 
-                                IntlDateFormatter::LONG,  //date
-                                IntlDateFormatter::SHORT //heure
-                            );
-                            echo $formatter->format($date);
-                        ?>
-                        </time>
-                    </h3>
-                        <?php 
-                        if ($post['author_name'] === $user['alias']) {
-                        ?>
-                            <address>de
-                            <a href="wall.php?user_id=<?php echo $userId ?>"> <?php echo $post['author_name'];?></a>
-                        <?php
-                        } else {
-                        ?>
-                            <address>de
-                            <a href="wall.php?user_id=<?php echo $_SESSION['connected_id'] ?>"> <?php echo $post['author_name'];?></a>
-                            à <a href="wall.php?user_id=<?php echo $userId ?>"> <?php echo $user['alias'];?></a>
-                        <?php } ?>
-
-                    </address>
-                    <div>
-                        <p><?php echo $post['content'] ?></p>
-                    </div>
-                    <footer>
-                        <small>♥ <?php echo $post['like_number'] ?></small>
-                        <form action="wall.php" method="post" style="display:inline;">
-                            <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>" />
-                            <!-- <?php echo "<pre>" . print_r($post, 1) . "</pre>"; ?> -->
-                            <button type="submit" name="action" value="like">👍 J'aime</button>
-                            <button type="submit" name="action" value="dislike">👎 Je n'aime plus</button>
-                        </form>
-                        <a href="">#<?php echo $post['taglist'] ?></a>,
-
-                    </footer>
-                </article>
-                <?php
-            }
+            <?php 
+            include 'view_posts.php';
             ?>
         </main>
     </div>
