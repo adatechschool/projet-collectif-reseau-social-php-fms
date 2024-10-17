@@ -34,7 +34,7 @@ include 'connect.php';
                 <?php
                 $enCoursDeTraitement = isset($_POST['email']);
                 if ($enCoursDeTraitement) {
-                    echo "<pre>" . print_r($_POST, 1) . "</pre>";
+                    //echo "<pre>" . print_r($_POST, 1) . "</pre>";
                     $new_email = $_POST['email'];
                     $new_alias = $_POST['pseudo'];
                     $new_passwd = $_POST['motpasse'];
@@ -55,7 +55,7 @@ include 'connect.php';
                         echo "L'inscription a échouée : " . $mysqli->error;
                     } else {
                         echo "Votre inscription est un succès : " . $new_alias;
-                        echo " <a href='login.php'>Connectez-vous.</a>";
+                        echo " <a href='login.php'>Connectez-vous.></a>";
                     }
                 }
                 ?>

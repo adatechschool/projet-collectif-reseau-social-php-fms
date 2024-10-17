@@ -35,7 +35,7 @@ session_start();
                 <?php
                 $enCoursDeTraitement = isset($_POST['email']);
                 if ($enCoursDeTraitement) {
-                    echo "<pre>" . print_r($_POST, 1) . "</pre>";
+                    //echo "<pre>" . print_r($_POST, 1) . "</pre>";
                     $emailAVerifier = $_POST['email'];
                     $passwdAVerifier = $_POST['motpasse'];
                     $emailAVerifier = $mysqli->real_escape_string($emailAVerifier);
@@ -53,10 +53,10 @@ session_start();
                         echo "La connexion a échouée. ";
 
                     } else {
-                        echo "Votre connexion est un succès : " . $user['alias'] . ".";
+                       echo "Votre connexion est un succès : " . $user['alias'] . ".";
                         $_SESSION['connected_id'] = $user['id'];
                         $_SESSION['pseudo'] = $user['alias'];
-                        var_dump($_SESSION);
+                        //var_dump($_SESSION);
 
                     }
             }
