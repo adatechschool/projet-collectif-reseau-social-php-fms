@@ -14,6 +14,13 @@ session_start();
 </head>
 
 <body>
+<section class="top-bar">
+        <div class="window-controls">
+            <button class="close-btn"></button>
+            <button class="minimize-btn"></button>
+            <button class="maximize-btn"></button>
+        </div>
+    </section>
     <?php include 'header.php'; ?>
 
     <div id="wrapper">

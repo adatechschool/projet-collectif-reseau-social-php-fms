@@ -11,13 +11,19 @@ include 'likes.php';
     <meta charset="utf-8">
     <title>ReSoC - Mur</title>
     <meta name="author" content="Julien Falconnet">
-    <link rel="stylesheet" href="style.css?v=1.5" />
+    <link rel="stylesheet" href="style.css?v=1.6" />
 
     <!-- nouvelle version du CSS suite à ajout de la class sub-unsub-forms -->
 </head>
 
 <body>
-    <section class="top-bar"></section>
+    <section class="top-bar">
+        <div class="window-controls">
+            <button class="close-btn"></button>
+            <button class="minimize-btn"></button>
+            <button class="maximize-btn"></button>
+        </div>
+    </section>
     <?php include 'header.php'; ?>
 
     <div id="wrapper">
@@ -148,28 +154,12 @@ include 'likes.php';
                         <!-- Champ caché pour envoyer l'ID de l'utilisateur à suivre -->
                         <input type="hidden" name="user_id" value="<?php echo $userId; ?>" />
                         <input type="submit" value="m'abonner" name="subscribe" id="sub-button">
-                        <!-- <input type="submit" name="subscribe" value="Suivre" class="sub-button-pushable"> -->
-                        <!-- <button type="submit" name="subscribe" value="Suivre" class="button-sub-pushable">
-                            <span class="button-sub-shadow"></span>
-                            <span class="button-sub-edge"></span>
-                            <span class="button-sub-front">
-                                Suivre
-                            </span>
-                        </button> -->
                     </form>
                     <!-- Formulaire pour se désabonner -->
                     <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
                         <!-- Champ caché pour envoyer l'ID de l'utilisateur à désabonner -->
                         <input type="hidden" name="user_id" value="<?php echo $userId; ?>" />
                         <input type="submit" value="me désabonner" name="unsubscribe" id="unsub-button">
-                        <!-- <input type="submit" name="unsubscribe" value="Ne plus suivre"> -->
-                        <!-- <button type="submit" name="unsubscribe" value="Ne plus suivre" class="button-sub-pushable" id="unsubscribe">
-                            <span class="button-sub-shadow"></span>
-                            <span class="button-unsub-edge"></span>
-                            <span class="button-unsub-front">
-                                Ne plus suivre
-                            </span>
-                        </button> -->
                     </form>
 
                 </div>
@@ -198,12 +188,24 @@ include 'likes.php';
             ?>
 
             <!-- Formulaire pour envoyer un message -->
+            <div class="emoji-picker">
+                <span class="emoji">😀</span>
+                <span class="emoji">😂</span>
+                <span class="emoji">❤️</span>
+                <span class="emoji">🔥</span>
+                <span class="emoji">👍</span>
+                <span class="emoji">😎</span>
+                <span class="emoji">🙌</span>
+            </div>
             <form class="post" action="wall.php?user_id=<?php echo $userId; ?>" method="post">
 
                 <textarea name='message' placeholder="Écris ton ptit mess ici..."></textarea>
 
                 <input type="submit" value="Envoyer" id="button-envoyer">
+
             </form>
+
+
             <?php
             // Affichage des publications
             while ($post = $lesInformations->fetch_assoc()) {
@@ -211,15 +213,15 @@ include 'likes.php';
                 <article>
                     <h3>
                         <time datetime='<?php echo $post['created'] ?>'>
-                        <?php 
-                            $date = new DateTime($post['created']); 
+                            <?php
+                            $date = new DateTime($post['created']);
                             $formatter = new IntlDateFormatter(
-                                'fr_FR', 
+                                'fr_FR',
                                 IntlDateFormatter::LONG,  //date
                                 IntlDateFormatter::SHORT //heure
                             );
                             echo $formatter->format($date);
-                        ?>
+                            ?>
                         </time>
                     </h3>
                     <address>par <?php echo $post['author_name'] ?></address>

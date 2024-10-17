@@ -14,6 +14,13 @@ include 'connect.php';
 </head>
 
 <body>
+    <section class="top-bar">
+        <div class="window-controls">
+            <button class="close-btn"></button>
+            <button class="minimize-btn"></button>
+            <button class="maximize-btn"></button>
+        </div>
+    </section>
     <?php include 'header.php'; ?>
 
 
@@ -23,8 +30,8 @@ include 'connect.php';
             <section>
                 <h3>Présentation</h3>
                 <p>Sur cette page vous trouverez la liste des personnes dont
-                    l'utilisatrice
-                    n° <?php echo $userId; ?>
+                     <?php echo $userPseudo; ?>
+                    <!-- n° <?php echo $userId; ?> -->
                     suit les messages
                 </p>
 

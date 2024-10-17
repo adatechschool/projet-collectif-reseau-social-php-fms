@@ -14,7 +14,13 @@ include 'connect.php';
 </head>
 
 <body>
-
+    <section class="top-bar">
+        <div class="window-controls">
+            <button class="close-btn"></button>
+            <button class="minimize-btn"></button>
+            <button class="maximize-btn"></button>
+        </div>
+    </section>
     <?php include 'header.php'; ?>
 
     <div id="wrapper">
@@ -30,8 +36,9 @@ include 'connect.php';
             <section>
                 <h3>Présentation</h3>
                 <p>Sur cette page vous trouverez la liste des personnes qui
-                    suivent les messages de l'utilisatrice <?php echo $userPseudo; ?>
-                    n° <?php echo $userId; ?></p>
+                    suivent les messages de <?php echo $userPseudo; ?>
+                    <!-- n° <?php echo $userId; ?> -->
+                </p>
 
             </section>
         </aside>
@@ -53,7 +60,7 @@ include 'connect.php';
                 <article>
                     <img src="user.jpg" alt="blason" />
                     <h3><?php echo $followers['alias']; ?></h3>
-                    <p><?php echo "id: " . $followers['id']; ?></p>
+                    <!-- <p><?php echo "id: " . $followers['id']; ?></p> -->
                 </article>
                 <?php
             }
