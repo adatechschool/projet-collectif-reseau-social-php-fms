@@ -1,22 +1,24 @@
 body {
     background: rgb(255, 255, 255);
-    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(221, 255, 253, 1) 50%, rgba(109, 217, 181, 1) 100%);
-    font-family: 'Courier New', Courier, monospace;
+    background: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(221, 255, 253, 1) 50%,
+        rgba(109, 217, 181, 1) 100%
+    );
+    font-family: "Courier New", Courier, monospace;
 
     /* Coins arrondis */
     margin: 0;
-
-
 }
 
 .top-bar {
     /* background-color:blue; */
     height: 2em;
-    background: #1C8CD7;
+    background: #1c8cd7;
     /* Couleur de la barre supérieure */
     border-radius: 4px;
     box-shadow: inset 0 4px 8px rgba(255, 255, 255, 0.4), 3px 3px 5px rgba(0, 0, 0, 0.3);
-
 }
 
 a {
@@ -25,26 +27,24 @@ a {
 }
 
 a:hover {
-    color: #FF4500;
+    color: #ff4500;
 }
 
-body>header {
-    background-color: #D8D8D8;
+body > header {
+    background-color: #d8d8d8;
     display: flex;
     width: 100%;
     height: 3em;
     /* margin: 0 auto 1em auto; */
     padding: 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-
 }
 
-body>header img {
-
+body > header img {
     height: 100%;
 }
 
-body>header #menu {
+body > header #menu {
     display: flex;
     width: 30%;
     align-items: stretch;
@@ -53,7 +53,7 @@ body>header #menu {
     /* Ombre portée */
 }
 
-body>header #menu a {
+body > header #menu a {
     transition: background-color 0.3s, transform 0.3s;
     /* Douce transition */
     flex: 1;
@@ -61,13 +61,12 @@ body>header #menu a {
     text-align: center;
     padding-top: 1em;
 
-    color: #1C8CD7;
+    color: #1c8cd7;
     /* Couleur des liens */
-    
 }
 
-body>header a:hover {
-    background-color: #00B140;
+body > header a:hover {
+    background-color: #00b140;
     /* Couleur de fond au survol */
     color: white;
     /* Texte blanc au survol */
@@ -75,28 +74,25 @@ body>header a:hover {
     /* Légère élévation au survol */
 }
 
-body>header ul {
+body > header ul {
     list-style: none;
 }
 
-body>header #user {
+body > header #user {
     margin-left: auto;
     flex: 0.2;
     border-left: 1px solid #99b;
-    
-
 }
 
-body>header #user>a {
+body > header #user > a {
     display: block;
     text-align: center;
     padding: 1em 0;
-    color: #1C8CD7;
+    color: #1c8cd7;
     width: 100%;
-
 }
 
-body>header #user ul {
+body > header #user ul {
     display: none;
     position: absolute;
     padding: 0;
@@ -108,21 +104,20 @@ body>header #user ul {
     z-index: 1;
 }
 
-body>header #user ul li a {
+body > header #user ul li a {
     display: block;
     width: 10em;
     padding: 1em;
     border-bottom: 1px solid #99b;
-
 }
 
-body>header #user:hover ul {
+body > header #user:hover ul {
     display: block;
 }
 
 aside h3 {
     text-align: center;
-    color: #1C8CD7;
+    color: #1c8cd7;
     /* Titre bleu */
     text-shadow: 0 4px 4px rgba(13, 125, 13, 0.404);
 }
@@ -151,10 +146,8 @@ aside h3 {
 
 #wrapper aside img {
     display: block;
-    width: 50%;
     margin: auto;
 }
-
 
 .sub-unsub-forms {
     display: flex;
@@ -174,7 +167,6 @@ aside h3 {
     /* display: flex; */
     /* flex-wrap: wrap;  */
     /* Permet au formulaire de se comporter correctement sur petits écrans */
-
 }
 
 #wrapper main {
@@ -192,7 +184,6 @@ aside h3 {
     margin-bottom: 1em;
     border-radius: 1em;
     width: 90%;
-
 }
 
 #wrapper main article h3 {
@@ -200,10 +191,8 @@ aside h3 {
     padding: 0;
     font-weight: normal;
     font-size: 1em;
-    color: #1C8CD7;
+    color: #1c8cd7;
     font-weight: bold;
-
-
 }
 
 #wrapper main article time {
@@ -213,14 +202,12 @@ aside h3 {
 #wrapper main article address {
     text-align: right;
     margin-bottom: 1em;
-    color: #1C8CD7;
+    color: #1c8cd7;
     font-weight: bold;
 }
 
 #wrapper main article p {
     margin: 0;
-
-
 }
 
 #wrapper main article footer {
@@ -238,7 +225,6 @@ aside h3 {
     margin-right: 1em;
 }
 
-
 #wrapper main article footer form {
     display: inline-flex;
     /* Place les boutons sur la même ligne */
@@ -247,14 +233,19 @@ aside h3 {
 }
 
 #wrapper main article footer button {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
     border-style: dotted;
     background: rgb(255, 255, 255);
-    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(221, 255, 253, 1) 50%, rgba(109, 217, 181, 1) 100%);
+    background: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(221, 255, 253, 1) 50%,
+        rgba(109, 217, 181, 1) 100%
+    );
 }
 
 #wrapper.admin {
-    flex-direction: row-reverse
+    flex-direction: row-reverse;
 }
 
 #wrapper.admin aside {
@@ -296,7 +287,6 @@ aside h3 {
 }
 
 .post {
- 
     padding-bottom: 2em;
     display: flex;
     /* Permet de placer les éléments sur la même ligne */
@@ -305,7 +295,6 @@ aside h3 {
     /* Aligne verticalement les éléments au centre */
 
     width: 100%;
-
 
     /* Permet aux boutons de passer à la ligne si nécessaire */
     gap: 1%;
@@ -320,8 +309,7 @@ aside h3 {
 .post textarea {
     width: 78%;
     box-shadow: inset 0px 4px 6px rgba(255, 255, 255, 0.5),
-        /* Ombre interne (effet de surbrillance) */
-        2px 2px 4px rgba(0, 0, 0, 0.5);
+        /* Ombre interne (effet de surbrillance) */ 2px 2px 4px rgba(0, 0, 0, 0.5);
     border-radius: 7px;
     border-color: #1f0d60;
 }
@@ -368,7 +356,7 @@ form dl dt {
 form dl dd {
     margin-left: 10em;
     line-height: 1.5em;
-    margin-bottom: 1em
+    margin-bottom: 1em;
 }
 
 form dl dd textarea {
@@ -377,7 +365,6 @@ form dl dd textarea {
 }
 
 /** Gestion des boutons **/
-
 
 /* .sub-unsub-forms form>input[name="subscribe"] {
 
@@ -414,8 +401,7 @@ form dl dd textarea {
     background: hsl(0deg 0% 0% / 0.25);
     will-change: transform;
     transform: translateY(2px);
-    transition:
-        transform 600ms cubic-bezier(.3, .7, .4, 1);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
 }
 
 .button-sub-edge,
@@ -426,11 +412,13 @@ form dl dd textarea {
     width: 100%;
     height: 100%;
     border-radius: 7px;
-    background: linear-gradient(to left,
-            hsl(32, 96%, 40%) 0%,
-            hsl(23, 82%, 52%) 8%,
-            hsl(27, 88%, 55%) 92%,
-            hsl(28, 95%, 53%) 100%);
+    background: linear-gradient(
+        to left,
+        hsl(32, 96%, 40%) 0%,
+        hsl(23, 82%, 52%) 8%,
+        hsl(27, 88%, 55%) 92%,
+        hsl(28, 95%, 53%) 100%
+    );
 }
 
 /* .button-unsub-edge {
@@ -455,14 +443,19 @@ form dl dd textarea {
     border: solid 1px;
     border-bottom: solid orangered;
     font-size: 1rem;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
     color: rgb(33, 52, 116);
     background: rgb(65, 51, 158);
-    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 5%, rgba(197, 218, 238, 1) 46%, rgba(214, 227, 239, 1) 60%, rgba(237, 245, 252, 1) 100%);
+    background: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 1) 5%,
+        rgba(197, 218, 238, 1) 46%,
+        rgba(214, 227, 239, 1) 60%,
+        rgba(237, 245, 252, 1) 100%
+    );
     will-change: transform;
     transform: translateY(-4px);
-    transition:
-        transform 600ms cubic-bezier(.3, .7, .4, 1);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
 }
 
 .button-unsub-front {
@@ -471,18 +464,21 @@ form dl dd textarea {
     padding: 10px 25px;
     border-radius: 7px;
     border: solid 1px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
     border-bottom: solid orangered;
     font-size: 1rem;
     color: rgb(33, 52, 116);
     background: rgb(255, 255, 255);
-    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(172, 168, 217, 1) 44%, rgba(221, 221, 221, 1) 59%);
+    background: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(172, 168, 217, 1) 44%,
+        rgba(221, 221, 221, 1) 59%
+    );
     will-change: transform;
     transform: translateY(-4px);
-    transition:
-        transform 600ms cubic-bezier(.3, .7, .4, 1);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
 }
-
 
 @media (max-width: 768px) {
     .sub-unsub-forms {
@@ -502,7 +498,6 @@ form dl dd textarea {
     #unsub-button {
         width: 100%;
         /* Chaque bouton/formulaire prend la largeur complète */
-
     }
 }
 
@@ -513,8 +508,7 @@ form dl dd textarea {
 
 .button-sub-pushable:hover .button-sub-front {
     transform: translateY(-6px);
-    transition:
-        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
 }
 
 .button-sub-pushable:active .button-sub-front {
@@ -524,8 +518,7 @@ form dl dd textarea {
 
 .button-sub-pushable:hover .button-sub-shadow {
     transform: translateY(4px);
-    transition:
-        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
 }
 
 .button-sub-pushable:active .button-sub-shadow {
@@ -539,7 +532,7 @@ form dl dd textarea {
 
 /* Style pour le bouton Envoyer */
 #button-envoyer {
-    background: linear-gradient(180deg, #FFFFFF 0%, #D3D3D3 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #d3d3d3 100%);
     /* Dégradé du haut vers le bas */
     border: 1px solid #1f0d60;
     /* Bordure grise */
@@ -547,7 +540,7 @@ form dl dd textarea {
     /* Coins arrondis */
     padding: 10px 20px;
     /* Espacement interne */
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
     font-size: 16px;
     /* Taille du texte */
     font-weight: bold;
@@ -555,8 +548,7 @@ form dl dd textarea {
     color: #1f0d60;
     /* Couleur du texte */
     box-shadow: inset 0px 4px 6px rgba(232, 144, 11, 0.5),
-        /* Ombre interne (effet de surbrillance) */
-        2px 2px 4px rgba(9, 199, 28, 0.5);
+        /* Ombre interne (effet de surbrillance) */ 2px 2px 4px rgba(9, 199, 28, 0.5);
     /* Ombre externe (effet 3D) */
     cursor: pointer;
     text-transform: uppercase;
@@ -566,30 +558,26 @@ form dl dd textarea {
 }
 
 #button-envoyer:hover {
-    background: linear-gradient(180deg, #EFEFEF 0%, #C0C0C0 100%);
+    background: linear-gradient(180deg, #efefef 0%, #c0c0c0 100%);
     /* Légère variation du dégradé au survol */
     box-shadow: inset 0px 4px 6px rgba(255, 255, 255, 0.7),
-        /* Accentuation de l'ombre interne */
-        4px 4px 8px rgba(0, 0, 0, 0.6);
+        /* Accentuation de l'ombre interne */ 4px 4px 8px rgba(0, 0, 0, 0.6);
     /* Augmentation de l'ombre externe */
 }
 
 #button-envoyer:active {
-    background: linear-gradient(180deg, #D3D3D3 0%, #A9A9A9 100%);
+    background: linear-gradient(180deg, #d3d3d3 0%, #a9a9a9 100%);
     /* Couleur plus sombre à l'appui */
-    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.6),
-        /* Réduction de l'ombre interne */
-        1px 1px 2px rgba(0, 0, 0, 0.7);
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.6), /* Réduction de l'ombre interne */ 1px 1px 2px rgba(0, 0, 0, 0.7);
     /* Réduction de l'ombre externe */
     transform: translateY(2px);
     /* Légère translation pour effet de clic */
 }
 
-
 /* Style pour le bouton d'abonnement */
 #sub-button,
 #unsub-button {
-    background: linear-gradient(180deg, #FFFFFF 0%, #D3D3D3 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #d3d3d3 100%);
     /* Dégradé du haut vers le bas */
     border: 1px solid #1f0d60;
     /* Bordure grise */
@@ -597,15 +585,14 @@ form dl dd textarea {
     /* Coins arrondis */
     padding: 8px 18px;
     /* Espacement interne */
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
     font-size: 14px;
     /* Taille du texte */
     font-weight: bold;
     color: #1f0d60;
     /* Couleur du texte */
     box-shadow: inset 0px 4px 6px rgba(232, 144, 11, 0.5),
-        /* Ombre interne (effet de surbrillance) */
-        2px 2px 4px rgba(9, 199, 28, 0.5);
+        /* Ombre interne (effet de surbrillance) */ 2px 2px 4px rgba(9, 199, 28, 0.5);
     /* Ombre externe (effet 3D) */
     cursor: pointer;
     text-transform: uppercase;
@@ -616,22 +603,62 @@ form dl dd textarea {
 
 #sub-button:hover,
 #unsub-button:hover {
-    background: linear-gradient(180deg, #EFEFEF 0%, #C0C0C0 100%);
+    background: linear-gradient(180deg, #efefef 0%, #c0c0c0 100%);
     /* Légère variation du dégradé au survol */
     box-shadow: inset 0px 4px 6px rgba(255, 255, 255, 0.7),
-        /* Accentuation de l'ombre interne */
-        4px 4px 8px rgba(0, 0, 0, 0.6);
+        /* Accentuation de l'ombre interne */ 4px 4px 8px rgba(0, 0, 0, 0.6);
     /* Augmentation de l'ombre externe */
 }
 
 #sub-button:active,
 #unsub-button:active {
-    background: linear-gradient(180deg, #D3D3D3 0%, #A9A9A9 100%);
+    background: linear-gradient(180deg, #d3d3d3 0%, #a9a9a9 100%);
     /* Couleur plus sombre à l'appui */
-    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.6),
-        /* Réduction de l'ombre interne */
-        1px 1px 2px rgba(0, 0, 0, 0.7);
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.6), /* Réduction de l'ombre interne */ 1px 1px 2px rgba(0, 0, 0, 0.7);
     /* Réduction de l'ombre externe */
     transform: translateY(2px);
     /* Légère translation pour effet de clic */
+}
+
+.sidebar #avatar-frame {
+    width: fit-content;
+    height: 100px;
+    margin: 0 auto;
+    padding: 8px 8px;
+    border: 1px solid #cccccf;
+    border-radius: 16px/24px;
+    position: relative;
+}
+
+.online {
+    background: linear-gradient(#d6ffdb00 0%, #d6ffdb 30%, #66ff00 100%);
+    box-shadow: 0 5px 10px #66ff00;
+}
+
+.busy {
+    background: linear-gradient(#ff9a0000 0%, #d8820055 30%, #fca30d 100%);
+    box-shadow: 0 5px 10px #fca30d;
+}
+
+.sidebar #avatar-frame img {
+    max-width: 100px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.gloss {
+    width: 100%;
+    height: 100%;
+    /*   background: red; */
+    background: radial-gradient(
+        ellipse 200px 140px at 50% 0%,
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0) 51%
+    );
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    border-radius: 16px/24px;
 }

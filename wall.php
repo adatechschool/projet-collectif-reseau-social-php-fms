@@ -129,7 +129,13 @@ include 'likes.php';
             ?>
             <!-- <h2><?php echo "<pre>" . "userId lié à la page actuellement : " . $userId . "</pre>"; ?></h2> -->
             <!-- <h2><?php echo "<pre>" . "Confirmation de l'id du user connecté : " . $authorId . "</pre>"; ?></h2> -->
-            <img src="user.jpg" alt="Portrait de l'utilisatrice" />
+            <!-- <img src="user.jpg" alt="Portrait de l'utilisatrice" /> -->
+            <div class="sidebar">
+                <div id="avatar-frame" class="online">
+                    <span class="gloss"></span>
+                        <img width="100px" height="100px" src="msn_avatar.png"/>
+                </div>
+            </div>    
             <section>
                 <h3><?php echo ($user['alias']) ?></h3>
                 <p>Bienvenue sur mon mur

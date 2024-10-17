@@ -12,7 +12,7 @@ include 'likes.php';
     <meta charset="utf-8">
     <title>ReSoC - Actualités</title>
     <meta name="author" content="Julien Falconnet">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css?v=1.5" />
 </head>
 
 <body>
@@ -20,7 +20,12 @@ include 'likes.php';
 
     <div id="wrapper">
         <aside>
-            <img src="user.jpg" alt="Portrait de l'utilisatrice" />
+        <div class="sidebar">
+                <div id="avatar-frame" class="online">
+                    <span class="gloss"></span>
+                        <img width="100px" height="100px" src="Taylor-Swift.webp"/>
+                </div>
+            </div>    
             <section>
                 <h3>Tous messages de fms</h3>
                 <p>Retrouvez toutes les publications de fms !</p>
