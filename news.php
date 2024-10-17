@@ -16,6 +16,13 @@ include 'likes.php';
 </head>
 
 <body>
+    <section class="top-bar">
+        <div class="window-controls">
+            <button class="close-btn"></button>
+            <button class="minimize-btn"></button>
+            <button class="maximize-btn"></button>
+        </div>
+    </section>
     <?php include 'header.php'; ?>
 
     <div id="wrapper">
@@ -71,16 +78,16 @@ include 'likes.php';
                 ?>
                 <article>
                     <h3>
-                    <time datetime='<?php echo $post['created'] ?>'>
-                        <?php 
-                            $date = new DateTime($post['created']); 
+                        <time datetime='<?php echo $post['created'] ?>'>
+                            <?php
+                            $date = new DateTime($post['created']);
                             $formatter = new IntlDateFormatter(
-                                'fr_FR', 
+                                'fr_FR',
                                 IntlDateFormatter::LONG,  //date
                                 IntlDateFormatter::SHORT //heure
                             );
                             echo $formatter->format($date);
-                        ?>
+                            ?>
                         </time>
                     </h3>
                     <!-- <address>par <?php echo $post['author_name'] ?></address> -->

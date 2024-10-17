@@ -15,6 +15,13 @@ include 'likes.php';
 </head>
 
 <body>
+    <section class="top-bar">
+        <div class="window-controls">
+            <button class="close-btn"></button>
+            <button class="minimize-btn"></button>
+            <button class="maximize-btn"></button>
+        </div>
+    </section>
     <?php include 'header.php'; ?>
 
     <div id="wrapper">
@@ -25,7 +32,7 @@ include 'likes.php';
                         <img width="100px" height="100px" src="Taylor-Swift.webp"/>
                 </div>            <section>
                 <h3>Vos abonnements</h3>
-                <p><?php echo $userPseudo;?>, voici tous les messages des personnes que vous suivez !
+                <p><?php echo $userPseudo; ?>, voici tous les messages des personnes que vous suivez !
                 </p>
             </section>
         </aside>
@@ -59,15 +66,15 @@ include 'likes.php';
                 <article>
                     <h3>
                         <time datetime='<?php echo $post['created'] ?>'>
-                            <?php 
-                                $date = new DateTime($post['created']); 
-                                $formatter = new IntlDateFormatter(
-                                'fr_FR', 
+                            <?php
+                            $date = new DateTime($post['created']);
+                            $formatter = new IntlDateFormatter(
+                                'fr_FR',
                                 IntlDateFormatter::LONG,  //date
                                 IntlDateFormatter::SHORT //heure
                             );
                             echo $formatter->format($date);
-                        ?>
+                            ?>
                         </time>
                     </h3>
                     <address>par
